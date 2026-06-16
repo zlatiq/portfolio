@@ -162,6 +162,10 @@ a {
   font-weight: 800;
 }
 
+.header-portfolio {
+  background: var(--mint);
+}
+
 .icon-button {
   display: inline-grid;
   place-items: center;

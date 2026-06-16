@@ -10,6 +10,7 @@ import {
   ChevronRight,
   Download,
   Feather,
+  FileText,
   Layers3,
   Mail,
   Menu,
@@ -312,6 +313,17 @@ export default function PortfolioExperience() {
           <span>CV</span>
         </a>
 
+        <a
+          className="header-cv header-portfolio"
+          href="/assets/portfolio-zlatica-strkolcova-a4.pdf"
+          aria-label="Otvoriť detailné A4 PDF portfólio"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <FileText aria-hidden="true" />
+          <span>Portfólio</span>
+        </a>
+
         <button
           className="icon-button menu-toggle"
           type="button"
@@ -561,6 +573,15 @@ export default function PortfolioExperience() {
             <a className="button button-outline" href="/assets/cv-zlatica-strkolcova.pdf">
               <Download aria-hidden="true" />
               Stiahnuť CV
+            </a>
+            <a
+              className="button button-outline"
+              href="/assets/portfolio-zlatica-strkolcova-a4.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FileText aria-hidden="true" />
+              Portfólio PDF (A4)
             </a>
           </div>
         </section>

@@ -125,7 +125,7 @@ h3 {
   top: 0;
   z-index: 50;
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto auto auto;
   align-items: center;
   gap: 0.6rem;
   border-bottom: 1px solid rgba(36, 33, 31, 0.1);
@@ -205,6 +205,10 @@ h3 {
   padding: 0.55rem 0.7rem;
   font-size: 0.9rem;
   font-weight: 850;
+}
+
+.header-portfolio {
+  background: var(--mint);
 }
 
 .icon-button {
@@ -935,7 +939,7 @@ h3 {
 
 @media (min-width: 700px) {
   .site-header {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     padding-inline: 1.4rem;
   }
 
