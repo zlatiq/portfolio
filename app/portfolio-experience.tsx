@@ -3,6 +3,7 @@
 import Image from "next/image";
 import {
   ArrowUpRight,
+  Award,
   BadgeCheck,
   BookOpen,
   BriefcaseBusiness,
@@ -13,12 +14,16 @@ import {
   FileText,
   Layers3,
   Mail,
+  Megaphone,
   Menu,
   MonitorSmartphone,
+  MousePointerClick,
+  Newspaper,
   Palette,
   PenTool,
   Phone,
   Sparkles,
+  Type,
   X,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
@@ -190,14 +195,52 @@ const categoryLabels: Record<Category, string> = {
   brand: "Identita",
 };
 
-const skills = [
-  "Adobe Illustrator",
-  "Adobe InDesign",
-  "Adobe Photoshop",
-  "Figma",
-  "UX/UI dizajn",
-  "Web dizajn",
-  "Typografia",
+function FigmaMark() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" />
+      <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z" />
+      <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z" />
+      <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z" />
+      <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z" />
+    </svg>
+  );
+}
+
+const tools = [
+  {
+    name: "Adobe Illustrator",
+    mark: "Ai",
+    text: "Logá, ikony, ilustrácie, vektorová grafika",
+    accent: "peach",
+  },
+  {
+    name: "Adobe InDesign",
+    mark: "Id",
+    text: "Magazíny, brožúry, podklady pre tlač",
+    accent: "rose",
+  },
+  {
+    name: "Adobe Photoshop",
+    mark: "Ps",
+    text: "Retuš, koláže, vizuály pre kampane",
+    accent: "sky",
+  },
+  {
+    name: "Figma",
+    mark: <FigmaMark />,
+    text: "Weby, rozhrania, klikateľné prototypy",
+    accent: "lilac",
+  },
+];
+
+const focusAreas = [
+  { label: "UX/UI dizajn", icon: MousePointerClick },
+  { label: "Web dizajn", icon: MonitorSmartphone },
+  { label: "Typografia", icon: Type },
+  { label: "Editorial a print", icon: Newspaper },
+  { label: "Kampane a sociálne siete", icon: Megaphone },
+  { label: "Vizuálna identita", icon: PenTool },
 ];
 
 const timeline = [
@@ -475,8 +518,17 @@ export default function PortfolioExperience() {
         </section>
 
         <section className="section about" id="o-mne" aria-labelledby="about-title">
-          <div className="about-media">
-            <Image src="/assets/images/portrait.webp" alt="Zlatica Štrkolcová" fill sizes="(min-width: 900px) 36vw, 100vw" />
+          <div className="about-visual">
+            <div className="about-media">
+              <Image src="/assets/images/portrait.webp" alt="Zlatica Štrkolcová" fill sizes="(min-width: 900px) 36vw, 100vw" />
+            </div>
+            <p className="about-badge">
+              <Award aria-hidden="true" />
+              <span>
+                <strong>2 roky</strong>{" "}
+                profesionálne s&nbsp;Adobe a&nbsp;Figmou
+              </span>
+            </p>
           </div>
 
           <div className="about-copy">
@@ -484,17 +536,50 @@ export default function PortfolioExperience() {
               <Sparkles aria-hidden="true" />
               O mne
             </p>
-            <h2 id="about-title">Dizajn beriem ako spôsob, ako dať veciam tón, rytmus a zrozumiteľnosť.</h2>
+            <h2 id="about-title">Dizajn beriem ako spôsob, ako dať veciam tón, rytmus a&nbsp;zrozumiteľnosť.</h2>
             <p>
               Som grafická dizajnérka so zameraním na vizuálnu komunikáciu, web dizajn, UX/UI,
-              typografiu a print. Rada pracujem s atmosférou značky, no zároveň držím výstupy
-              čitateľné, praktické a pripravené pre reálne použitie.
+              typografiu a&nbsp;print. Rada pracujem s&nbsp;atmosférou značky, no zároveň držím výstupy
+              čitateľné, praktické a&nbsp;pripravené pre reálne použitie.
+            </p>
+            <p>
+              S&nbsp;nástrojmi Adobe a&nbsp;s&nbsp;Figmou pracujem profesionálne už <strong>dva roky</strong>.
+              Každodenná prax z&nbsp;nich urobila moje prirodzené prostredie – ovládam ich na expertnej
+              úrovni, a&nbsp;tak sa môžem naplno venovať tomu podstatnému: nápadu, detailu a&nbsp;výsledku,
+              ktorý obstojí na webe aj v&nbsp;tlači.
             </p>
 
-            <div className="skill-cloud" aria-label="Znalosti">
-              {skills.map((skill) => (
-                <span key={skill}>{skill}</span>
-              ))}
+            <div className="about-group">
+              <h3>Nástroje, v&nbsp;ktorých som doma</h3>
+              <ul className="tool-grid">
+                {tools.map((tool) => (
+                  <li className={`tool-card accent-${tool.accent}`} key={tool.name}>
+                    <span className="tool-mark" aria-hidden="true">
+                      {tool.mark}
+                    </span>
+                    <div>
+                      <strong>{tool.name}</strong>
+                      <p>{tool.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="about-group">
+              <h3>Čomu sa venujem</h3>
+              <ul className="focus-list">
+                {focusAreas.map((area) => {
+                  const Icon = area.icon;
+
+                  return (
+                    <li key={area.label}>
+                      <Icon aria-hidden="true" />
+                      {area.label}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </section>
